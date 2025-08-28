@@ -1,0 +1,55 @@
+<!---Copy boostrap css and jss ----->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registration Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+<div class="container my-3">
+    <h3 class="text-center mb-3">List of Students</h3>
+    <a class="btn btn-primary" href="/students/create">New Student</a>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>FullName</th>
+            <th>Gender</th>
+            <th>DOB</th>
+            <th>E-Mail</th>
+            <th>Password</th>
+            <th>PhoneNumber</th>
+            <th>Address</th>
+            <th>CourseName</th>
+        </tr>
+        </thead>
+        <tbody class="table-group-divider">
+        <tr th:each="student : ${students}">
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.fullName}"></td>
+            <td th:text="${student.gender}"></td>
+            <td th:text="${student.dob}"></td>
+            <td th:text="${student.email}"></td>
+            <td th:text="${student.password}"></td>
+            <td th:text="${student.phoneNumber}"></td>
+            <td th:text="${student.address}"></td>
+            <td th:text="${student.courseName}"></td>
+
+            <td style="white-space: nowrap">
+                <a class="btn btn-primary btn-sm" th:href="@{/students/edit(id=${student.id})}">Edit</a>
+
+                <a class="btn btn-danger btn-sm" th:href="@{/students/delete(id=${student.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+
+            </td>
+
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
